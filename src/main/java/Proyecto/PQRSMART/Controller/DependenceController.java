@@ -54,6 +54,16 @@ public class DependenceController {
         }
         return ResponseEntity.notFound().build();
     }
-
+    @PutMapping("/activate/{id}")
+    public ResponseEntity<DependenceDTO> activate(@PathVariable Long id){
+        Optional<DependenceDTO> dependenceDTOOptional = dependenceService.findById(id);
+        if(dependenceDTOOptional.isPresent()) {
+            DependenceDTO dependenceDTO = dependenceDTOOptional.get();
+            dependenceDTO.setState(new State(1l, "ACTIVADO"));
+            dependenceService.activate(dependenceDTO);
+            return ResponseEntity.ok(dependenceDTO);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
 }

@@ -36,4 +36,8 @@ public class CategoryService {
         categoryRepository.save(CategoryMapper.toEntity(categoryDTO));
         return categoryDTO;
     }
+    public CategoryDTO activate(CategoryDTO categoryDTO) {
+        categoryRepository.save(CategoryMapper.toEntity(categoryDTO));
+        return categoryDTO;
+    }
 }

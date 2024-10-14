@@ -56,4 +56,15 @@ public class CategoryController {
         }
         return ResponseEntity.notFound().build();
     }
+    @PatchMapping("/activate/{id}")
+    public ResponseEntity<CategoryDTO> activate(@PathVariable Long id){
+        Optional<CategoryDTO> categoryDTOOptional = categoryService.findById(id);
+        if(categoryDTOOptional.isPresent()) {
+            CategoryDTO categoryDTO = categoryDTOOptional.get();
+            categoryDTO.setState(new State(1l, "ACTIVADO"));
+            categoryService.activate(categoryDTO);
+            return ResponseEntity.ok(categoryDTO);
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
