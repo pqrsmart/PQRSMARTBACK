@@ -47,6 +47,7 @@ public class DependenceController {
     public ResponseEntity<DependenceDTO> delete(@PathVariable Long id){
         Optional<DependenceDTO> dependenceDTOOptional = dependenceService.findById(id);
         if(dependenceDTOOptional.isPresent()) {
+
             DependenceDTO dependenceDTO = dependenceDTOOptional.get();
             dependenceDTO.setState(new State(2l, "DESACTIVADO"));
             dependenceService.delete(dependenceDTO);
@@ -58,6 +59,7 @@ public class DependenceController {
     public ResponseEntity<DependenceDTO> activate(@PathVariable Long id){
         Optional<DependenceDTO> dependenceDTOOptional = dependenceService.findById(id);
         if(dependenceDTOOptional.isPresent()) {
+            System.out.println(dependenceDTOOptional);
             DependenceDTO dependenceDTO = dependenceDTOOptional.get();
             dependenceDTO.setState(new State(1l, "ACTIVADO"));
             dependenceService.activate(dependenceDTO);
