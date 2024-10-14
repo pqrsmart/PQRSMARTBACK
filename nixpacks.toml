@@ -1,0 +1,10 @@
+[phases.build]
+# Comando para construir el proyecto
+command = "mvn package -DskipTests"
+
+[phases.start]
+# Comando para iniciar la aplicación
+command = "java -jar target/my-app.jar"
+
+[variables]
+# Aquí puedes definir variables de entorno necesarias
