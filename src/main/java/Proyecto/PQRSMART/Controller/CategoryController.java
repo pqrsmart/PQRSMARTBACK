@@ -60,7 +60,6 @@ public class CategoryController {
     public ResponseEntity<CategoryDTO> activate(@PathVariable Long id){
         Optional<CategoryDTO> categoryDTOOptional = categoryService.findById(id);
         if(categoryDTOOptional.isPresent()) {
-            
             CategoryDTO categoryDTO = categoryDTOOptional.get();
             categoryDTO.setState(new State(1l, "ACTIVADO"));
             categoryService.activate(categoryDTO);
